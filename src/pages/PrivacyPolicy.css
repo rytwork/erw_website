@@ -9,11 +9,11 @@
 
 .privacy-title {
   color: #2b1055;
-  padding-left: 60px;
+  text-align: center;
 }
 
 .muted {
   color: #666;
   font-size: 0.95em;
-  padding-left: 60px;
+  text-align: center;
 }

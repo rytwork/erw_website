@@ -3,7 +3,7 @@ import "./TermsConditions.css";
 export default function TermsConditions() {
   return (
     <div className="terms-container">
-      <h1>Terms & Conditions</h1>
+      <h1 className="terms-title">Terms & Conditions</h1>
       <p className="muted">Last updated: February 6, 2026</p>
 
       <section>

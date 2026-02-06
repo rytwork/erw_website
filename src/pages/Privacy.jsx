@@ -3,7 +3,7 @@ import "./PrivacyPolicy.css";
 export default function PrivacyPolicy() {
   return (
     <div className="privacy-container">
-      <h1>Privacy Policy</h1>
+      <h1 className="privacy-title">Privacy Policy</h1>
       <p className="muted">Last updated: February 6, 2026</p>
 
       <section>

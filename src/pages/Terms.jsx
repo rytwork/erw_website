@@ -66,7 +66,7 @@ export default function TermsConditions() {
             money unless explicitly stated.
           </li>
           <li>
-            Points may be used to access features, join contests, or earn
+            Points may be used to access features, join Challenges, or earn
             rewards as described within the App.
           </li>
           <li>
@@ -82,7 +82,7 @@ export default function TermsConditions() {
           <li>
             The <strong>Learner Hub</strong> is dedicated to educational
             activities, including tutorials, practice materials, live doubt
-            sessions, and course-based contests.
+            sessions, and course-based Challenges.
           </li>
           <li>
             <strong>Live Doubt Sessions</strong> are conducted in real time only.
@@ -101,14 +101,14 @@ export default function TermsConditions() {
       </section>
 
       <section>
-        <h2>5. Game Zone — Gaming Contests</h2>
+        <h2>5. Game Zone — Gaming Challenges</h2>
         <ul>
           <li>
             The <strong>Game Zone</strong> is a separate section dedicated solely
-            to gaming contests and competitions.
+            to gaming Challenges and competitions.
           </li>
           <li>
-            Users may enter gaming contests using earned points or optional
+            Users may enter gaming Challenges using earned points or optional
             paid entry methods.
           </li>
           <li>

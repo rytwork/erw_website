@@ -44,7 +44,7 @@ export default function PrivacyPolicy() {
           <li>
             <strong>Learner Hub Data:</strong> Access to tutorials, practice
             papers, participation in <strong>live doubt-clearing sessions</strong>,
-            learning contests, points earned, rankings, and rewards.
+            learning Challenges, points earned, rankings, and rewards.
           </li>
           <li>
             <strong>Game Zone Data:</strong> Gaming contest participation,
@@ -78,7 +78,7 @@ export default function PrivacyPolicy() {
           <li>To authenticate users and manage accounts.</li>
           <li>
             To administer tasks, Learner Hub activities, and Game Zone
-            contests.
+            Challenges.
           </li>
           <li>
             To process contest entries, donations, and rewards using
@@ -101,7 +101,7 @@ export default function PrivacyPolicy() {
         <p>
           The <strong>Learner Hub</strong> is focused solely on educational
           activities, including tutorials, practice papers, live doubt
-          sessions, and course-based contests.
+          sessions, and course-based Challenges.
         </p>
         <ul>
           <li>
@@ -110,7 +110,7 @@ export default function PrivacyPolicy() {
             unless explicitly stated in advance.
           </li>
           <li>
-            <strong>Learning Contests:</strong> Users may join contests using
+            <strong>Learning Challenges:</strong> Users may join Challenges using
             earned points or optional donations, subject to applicable rules.
           </li>
           <li>
@@ -125,14 +125,14 @@ export default function PrivacyPolicy() {
       </section>
 
       <section>
-        <h2>Game Zone — Gaming Contests</h2>
+        <h2>Game Zone — Gaming Challenges</h2>
         <p>
           The <strong>Game Zone</strong> is a separate section dedicated
-          exclusively to gaming contests and competitions.
+          exclusively to gaming Challenges and competitions.
         </p>
         <ul>
           <li>
-            Users may enter gaming contests using earned points or optional
+            Users may enter gaming Challenges using earned points or optional
             donations.
           </li>
           <li>

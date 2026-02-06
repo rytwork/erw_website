@@ -1,0 +1,22 @@
+body {
+  margin: 0;
+  font-family: Inter, Arial, sans-serif;
+  background: #f9fafb;
+}
+
+/* POLICY PAGES */
+
+.policy {
+  max-width: 900px;
+  margin: auto;
+  padding: 40px 20px;
+}
+
+.policy h1,
+.policy h2 {
+  color: #5b21b6;
+}
+
+.policy p {
+  line-height: 1.7;
+}

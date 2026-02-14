@@ -1,6 +1,6 @@
 import "./home.css";
 import { Link } from "react-router-dom";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 
 export default function Home() {
   const [formData, setFormData] = useState({
@@ -8,16 +8,53 @@ export default function Home() {
     email: "",
     message: "",
   });
+
   const [loading, setLoading] = useState(false);
   const [successMessage, setSuccessMessage] = useState("");
   const [errorMessage, setErrorMessage] = useState("");
+  const [showAppStoreDialog, setShowAppStoreDialog] = useState(false);
+  const [qrImage, setQrImage] = useState("");
+
+  // VIDEO STATE
+  const [videoIds, setVideoIds] = useState([]);
+  const [videosLoading, setVideosLoading] = useState(true);
+
+  // FETCH VIDEOS FROM API
+  useEffect(() => {
+    const fetchVideos = async () => {
+      try {
+        const res = await fetch(
+          "https://api-fuf2uz5wdq-uc.a.run.app/api/user/getAboutAppVideoEmbedId"
+        );
+
+        const data = await res.json();
+
+        if (data?.status === "success" && Array.isArray(data.videoEmbedIds)) {
+          // remove extra query params (?si=...)
+          const cleanedIds = data.videoEmbedIds.map((id) =>
+            id.split("?")[0]
+          );
+
+          const donationQr = data.donationQR || "";
+          setQrImage(donationQr);
+          setVideoIds(cleanedIds);
+        } else {
+          setVideoIds([]);
+        }
+      } catch (e) {
+        console.error("Video fetch error:", e);
+      } finally {
+        setVideosLoading(false);
+      }
+    };
+
+    fetchVideos();
+  }, []);
+
 
   const handleInputChange = (e) => {
     const { name, value } = e.target;
-    setFormData((prev) => ({
-      ...prev,
-      [name]: value,
-    }));
+    setFormData((prev) => ({ ...prev, [name]: value }));
   };
 
   const handleSubmit = async (e) => {
@@ -27,19 +64,20 @@ export default function Home() {
     setErrorMessage("");
 
     try {
-      const response = await fetch("https://api-fuf2uz5wdq-uc.a.run.app/api/user/saveContactUs", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify(formData),
-      });
+      const response = await fetch(
+        "https://api-fuf2uz5wdq-uc.a.run.app/api/user/saveContactUs",
+        {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify(formData),
+        }
+      );
 
       if (response.ok) {
         setSuccessMessage("Message sent successfully!");
         setFormData({ name: "", email: "", message: "" });
       } else {
-        setErrorMessage("Failed to send message. Please try again.");
+        setErrorMessage("Failed to send message.");
       }
     } catch (error) {
       setErrorMessage("Error: " + error.message);
@@ -53,8 +91,7 @@ export default function Home() {
       {/* HERO */}
       <div className="hero">
         <div className="hero-box">
-          <img src="/logo.png"  alt="ERW Logo" />
-
+          <img src="/logo.png" alt="ERW Logo" />
           <h1>Earn Ref Wave</h1>
 
           <p>
@@ -73,32 +110,62 @@ export default function Home() {
               href="https://play.google.com/store/apps/details?id=your.package.name"
               target="_blank"
               rel="noreferrer"
+              className="store-btn"
             >
-              📲 Play Store
+              <span className="icon">📲</span>
+              <span className="text">
+                <small>Get it on</small>
+                <strong>Play Store</strong>
+              </span>
             </a>
 
-            <a href="#" className="secondary">
-              🍎 App Store
-            </a>
+            <button
+              className="store-btn"
+              onClick={() => setShowAppStoreDialog(true)}
+            >
+              <span className="icon">🍎</span>
+              <span className="text">
+                <small>Download on the</small>
+                <strong>App Store</strong>
+              </span>
+            </button>
           </div>
         </div>
       </div>
 
       {/* NAV */}
       <nav>
+        <a href="#videos">Videos</a>
         <a href="#about">About</a>
         <a href="#features">Features</a>
         <a href="#donate">Donate</a>
         <a href="#contact">Contact</a>
-
         <Link to="/privacy">Privacy</Link>
         <Link to="/terms">Terms</Link>
       </nav>
 
+      {/* VIDEOS (TOP NOW) */}
+      <section id="videos">
+        <h2>Watch & Learn</h2>
+        <div className="video-grid">
+          {videosLoading ? (
+            <p>Loading videos...</p>
+          ) : (
+            videoIds.map((id, index) => (
+              <iframe
+                key={index}
+                src={`https://www.youtube.com/embed/${id}`}
+                title={`Video ${index + 1}`}
+                allowFullScreen
+              />
+            ))
+          )}
+        </div>
+      </section>
+
       {/* ABOUT */}
       <section id="about">
         <h2>About Earn Ref Wave</h2>
-
         <p className="section-desc">
           Earn Ref Wave is a reward-based platform offering two independent
           experiences: the Learner Hub and the Game Zone.
@@ -122,30 +189,20 @@ export default function Home() {
       {/* FEATURES */}
       <section id="features">
         <h2>Why Users Love ERW</h2>
-
         <div className="features">
           <div className="feature">
             <h3>🎯 Learner Hub</h3>
-            <p>
-              Complete tasks, earn points, and use them for tutorials, practice
-              papers, live doubt sessions, and course-based contests.
-            </p>
+            <p>Complete tasks, earn points, unlock tutorials and contests.</p>
           </div>
 
           <div className="feature">
             <h3>📚 Live Doubt Sessions</h3>
-            <p>
-              Get real-time help from experts to clear doubts and improve
-              learning outcomes.
-            </p>
+            <p>Get live expert help for better learning outcomes.</p>
           </div>
 
           <div className="feature">
             <h3>🎮 Game Zone</h3>
-            <p>
-              A dedicated gaming area where users can join competitive contests
-              using points or donations and earn rewards.
-            </p>
+            <p>Join gaming contests and win rewards.</p>
           </div>
         </div>
       </section>
@@ -154,21 +211,21 @@ export default function Home() {
       <section id="donate">
         <div className="donate-card">
           <h2>Support Our Mission</h2>
-          <p>
-            With your support, we can create more educational opportunities and make it easier for users to find the right job.
-          </p>
-          <img src="/donate_qr.png" alt="Donate QR" />
+          <p>With your support, we can create more educational opportunities.</p>
+
+          {qrImage && (
+            <img src={qrImage} alt="Donate QR" />
+          )}
         </div>
       </section>
+
 
       {/* CONTACT */}
       <section id="contact">
         <h2>Get in Touch</h2>
-
         <div className="contact-card">
           <form onSubmit={handleSubmit}>
             <input
-              type="text"
               name="name"
               placeholder="Your Name"
               value={formData.name}
@@ -176,8 +233,8 @@ export default function Home() {
               required
             />
             <input
-              type="email"
               name="email"
+              type="email"
               placeholder="Your Email"
               value={formData.email}
               onChange={handleInputChange}
@@ -191,12 +248,10 @@ export default function Home() {
               onChange={handleInputChange}
               required
             />
-            {successMessage && (
-              <p style={{ color: "green" }}>{successMessage}</p>
-            )}
-            {errorMessage && (
-              <p style={{ color: "red" }}>{errorMessage}</p>
-            )}
+
+            {successMessage && <p style={{ color: "green" }}>{successMessage}</p>}
+            {errorMessage && <p style={{ color: "red" }}>{errorMessage}</p>}
+
             <button type="submit" disabled={loading}>
               {loading ? "Sending..." : "Send Message"}
             </button>
@@ -204,13 +259,20 @@ export default function Home() {
         </div>
       </section>
 
+      {/* APP STORE DIALOG */}
+      {showAppStoreDialog && (
+        <div className="dialog-overlay" onClick={() => setShowAppStoreDialog(false)}>
+          <div className="dialog-box" onClick={(e) => e.stopPropagation()}>
+            <h3>🍎 App Store Coming Soon</h3>
+            <p>We will be available soon on App Store.</p>
+            <button onClick={() => setShowAppStoreDialog(false)}>Close</button>
+          </div>
+        </div>
+      )}
+
       {/* FOOTER */}
       <footer>
         <p>© 2026 Earn Ref Wave (ERW)</p>
-        <p>
-          <Link to="/privacy">Privacy Policy</Link> |{" "}
-          <Link to="/terms">Terms & Conditions</Link>
-        </p>
       </footer>
     </>
   );

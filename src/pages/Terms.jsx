@@ -206,8 +206,13 @@ export default function TermsConditions() {
         </p>
         <p>
           <strong>Email:</strong>{" "}
-          <a href="mailto:earnrefwave0@gmail.com">
-            earnrefwave0@gmail.com
+          <a
+            href="mailto:earnrefwave@gmail.com"
+            className="email-link"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            earnrefwave@gmail.com
           </a>
         </p>
       </section>

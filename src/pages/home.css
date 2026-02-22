@@ -205,3 +205,33 @@ footer {
     padding: 20px;
   }
 }
+
+
+/* PURPOSE SECTION */
+.purpose-section {
+  text-align: center;
+  padding: 60px 20px;
+  background: linear-gradient(135deg, #0f2027, #203a43, #2c5364);
+  color: white;
+}
+
+.purpose-highlight {
+  background: rgba(255, 255, 255, 0.1);
+  border: 2px solid rgba(255, 255, 255, 0.3);
+  padding: 25px;
+  border-radius: 12px;
+  margin: 25px auto;
+  max-width: 700px;
+  backdrop-filter: blur(8px);
+}
+
+.purpose-highlight h3 {
+  margin-bottom: 10px;
+  font-size: 22px;
+  font-weight: bold;
+}
+
+.purpose-section h1 {
+  color: white;
+  text-align: center;
+}

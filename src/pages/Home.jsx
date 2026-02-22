@@ -135,7 +135,7 @@ export default function Home() {
 
       {/* NAV */}
       <nav>
-        <a href="#videos">Videos</a>
+        <a href="#purpose-videos">Purpose</a>
         <a href="#about">About</a>
         <a href="#features">Features</a>
         <a href="#donate">Donate</a>
@@ -144,24 +144,46 @@ export default function Home() {
         <Link to="/terms">Terms</Link>
       </nav>
 
-      {/* VIDEOS (TOP NOW) */}
-      <section id="videos">
-        <h2>Watch & Learn</h2>
+      {/* PURPOSE OF APP VIDEOS */}
+      <section id="purpose-videos" className="purpose-section">
+        <h1>🎯 Our Core Purpose</h1>
+
+        <div className="purpose-highlight">
+          <h3>Empowering Learning Through Rewards</h3>
+          <p>
+            Earn Ref Wave was built to motivate students and gamers by
+            combining education, competition, and real rewards.
+          </p>
+        </div>
+
+        <p className="section-desc">
+          Our mission is simple:
+          <strong> Complete tasks → Earn Points → Unlock Growth Opportunities.</strong>
+          <br /><br />
+          Whether through learning contests or gaming competitions,
+          the platform encourages skill development, discipline,
+          and healthy competition.
+        </p>
+
         <div className="video-grid">
           {videosLoading ? (
             <p>Loading videos...</p>
+          ) : videoIds.length === 0 ? (
+            <p>No purpose videos available at the moment.</p>
           ) : (
             videoIds.map((id, index) => (
               <iframe
                 key={index}
                 src={`https://www.youtube.com/embed/${id}`}
-                title={`Video ${index + 1}`}
+                title={`Purpose Video ${index + 1}`}
                 allowFullScreen
               />
             ))
           )}
         </div>
       </section>
+
+
 
       {/* ABOUT */}
       <section id="about">
@@ -184,12 +206,35 @@ export default function Home() {
           rewards earned from both sections may be similar and useful for
           further studies or everyday life.
         </p>
+        <div className="video-grid">
+          {videosLoading ? (
+            <p>Loading videos...</p>
+          ) : (
+            videoIds.map((id, index) => (
+              <iframe
+                key={index}
+                src={`https://www.youtube.com/embed/${id}`}
+                title={`Video ${index + 1}`}
+                allowFullScreen
+              />
+            ))
+          )}
+        </div>
       </section>
 
       {/* FEATURES */}
       <section id="features">
         <h2>Why Users Love ERW</h2>
         <div className="features">
+
+          <div className="feature">
+            <h3>💰 Earn After Completing Tasks</h3>
+            <p>
+              Users earn points after successfully completing the given tasks.
+              These points can be redeemed to join contests, unlock premium
+              content, or win exciting rewards.
+            </p>
+          </div>
           <div className="feature">
             <h3>🎯 Learner Hub</h3>
             <p>Complete tasks, earn points, unlock tutorials and contests.</p>

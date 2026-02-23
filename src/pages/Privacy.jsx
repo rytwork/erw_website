@@ -65,6 +65,12 @@ export default function PrivacyPolicy() {
             stored locally using GetStorage.
           </li>
           <li>
+            <strong>Media Access (QR Codes Only):</strong> The app uses the
+            READ_MEDIA_IMAGES permission only to access and save donation QR
+            code images on the user’s device. We do not access personal photos
+            or share any media. All images remain stored locally on the device.
+          </li>
+          <li>
             <strong>Push Notifications:</strong> Firebase Cloud Messaging (FCM)
             tokens used to deliver alerts and updates.
           </li>

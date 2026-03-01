@@ -172,12 +172,21 @@ export default function Home() {
             <p>No purpose videos available at the moment.</p>
           ) : (
             videoIds.map((id, index) => (
-              <iframe
-                key={index}
-                src={`https://www.youtube.com/embed/${id}`}
-                title={`Purpose Video ${index + 1}`}
-                allowFullScreen
-              />
+              // <iframe
+              //   key={index}
+              //   src={`https://www.youtube.com/embed/${id}`}
+              //   title={`Purpose Video ${index + 1}`}
+              //   allowFullScreen
+              // />
+              <Link to={`/watch/${id}/oANwFYuIHjTXFb0GmbYh/eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1aWQiOiI2Q2N0d09razF6Y2x1RFUzSlpSZFN2S01JR0UyIiwiZW1haWwiOiJiYW50aWt1bWFyNjEzNDJAZ21haWwuY29tIiwibWZhUGVuZGluZyI6ZmFsc2UsImlhdCI6MTc3MjM4MzQzMSwiZXhwIjoxNzcyOTg4MjMxfQ.3dJuMlr3a_c3jsT2UERFpt57xpXzDOQaZvIb30lGLBs`} key={index} className="video-link">
+                <div className="video-thumbnail">
+                  <img
+                    src={`https://img.youtube.com/vi/${id}/0.jpg`}
+                    alt={`Video ${index + 1}`}
+                  />
+                  <div className="play-button">▶</div>
+                </div>
+              </Link>
             ))
           )}
         </div>

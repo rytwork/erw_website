@@ -11,7 +11,7 @@ function App() {
         <Route path="/" element={<Home />} />
         <Route path="/terms" element={<TermsConditions />} />
         <Route path="/privacy" element={<PrivacyPolicy />} />
-        <Route path="/watch/:videoId/:taskId/:authToken" element={<WatchVideo />} />
+        <Route path="/watch/:videoId" element={<WatchVideo />} />
       </Routes>
     </BrowserRouter>
   );

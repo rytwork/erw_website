@@ -1,9 +1,8 @@
 import { useEffect, useRef } from "react";
 import { useParams } from "react-router-dom";
-import axios from "axios";
 
 export default function WatchVideo() {
-  const { videoId, taskId, authToken } = useParams();
+  const { videoId} = useParams();
 
   const playerRef = useRef(null);
   const intervalRef = useRef(null);
@@ -29,25 +28,7 @@ export default function WatchVideo() {
     const hitCompleteAPI = async () => {
       if (completedRef.current) return; // 🔥 prevent double call
       completedRef.current = true;
-
-      try {
-        console.log("🚀 Hitting API...");
-        await axios.post(
-          "https://api-fuf2uz5wdq-uc.a.run.app/api/user/completeTask",
-          {
-            status: "autoApproved",
-            taskId: taskId,
-          },
-          {
-            headers: {
-              Authorization: `Bearer ${authToken}`,
-            },
-          }
-        );
-        console.log("✅ Completion API called");
-      } catch (err) {
-        console.error("❌ API Error", err);
-      }
+      console.log("🚀 Hitting API...");
     };
 
     const initializePlayer = async () => {
@@ -86,8 +67,6 @@ export default function WatchVideo() {
         const duration = playerRef.current.getDuration();
 
         if (state === window.YT.PlayerState.PLAYING) {
-            console.log("current time: ", currentTime);
-            
           // Prevent skip
           if (currentTime > lastTimeRef.current + 1.5) {
             playerRef.current.seekTo(lastTimeRef.current);
@@ -112,7 +91,7 @@ export default function WatchVideo() {
       if (intervalRef.current) clearInterval(intervalRef.current);
       if (playerRef.current) playerRef.current.destroy();
     };
-  }, [videoId, taskId, authToken]); // 🔥 removed completed
+  }, [videoId]); // 🔥 removed completed
 
   return (
     <div

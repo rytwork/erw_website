@@ -91,8 +91,8 @@ export default function Home() {
       {/* HERO */}
       <div className="hero">
         <div className="hero-box">
-          <img src="/logo.png" alt="ERW Logo" />
-          <h1>Earn Ref Wave</h1>
+          <img src="/logo.png" alt="Erw pro Logo" />
+          <h1>Earn Refer Win</h1>
 
           <p>
             Learn. Earn. Compete.
@@ -151,7 +151,7 @@ export default function Home() {
         <div className="purpose-highlight">
           <h3>Empowering Learning Through Rewards</h3>
           <p>
-            Earn Ref Wave was built to motivate students and gamers by
+            Earn Refer Win was built to motivate students and gamers by
             combining education, competition, and real rewards.
           </p>
         </div>
@@ -187,9 +187,9 @@ export default function Home() {
 
       {/* ABOUT */}
       <section id="about">
-        <h2>About Earn Ref Wave</h2>
+        <h2>About Earn Refer Win</h2>
         <p className="section-desc">
-          Earn Ref Wave is a reward-based platform offering two independent
+          Earn Refer Win is a reward-based platform offering two independent
           experiences: the Learner Hub and the Game Zone.
           <br /><br />
           The <strong>Learner Hub</strong> focuses on education. Users complete
@@ -224,7 +224,7 @@ export default function Home() {
 
       {/* FEATURES */}
       <section id="features">
-        <h2>Why Users Love ERW</h2>
+        <h2>Why Users Love Erw pro</h2>
         <div className="features">
 
           <div className="feature">
@@ -317,7 +317,7 @@ export default function Home() {
 
       {/* FOOTER */}
       <footer>
-        <p>© 2026 Earn Ref Wave (ERW)</p>
+        <p>© 2026 Earn Refer Win (Erw pro)</p>
       </footer>
     </>
   );

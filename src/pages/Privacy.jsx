@@ -8,9 +8,9 @@ export default function PrivacyPolicy() {
 
       <section>
         <p>
-          This Privacy Policy explains how <strong>Earn Ref Wave (ERW)</strong>
+          This Privacy Policy explains how <strong>Earn Refer Win (Erw pro)</strong>
           (“we”, “our”, or “us”) collects, uses, stores, and protects your
-          information when you use the Earn Ref Wave mobile application and
+          information when you use the Earn Refer Win mobile application and
           related services (the “App”).
         </p>
         <p>
@@ -239,7 +239,7 @@ export default function PrivacyPolicy() {
 
       <footer className="muted">
         <p>
-          © Earn Ref Wave (ERW). This document is for informational purposes
+          © Earn Refer Win (Erw pro). This document is for informational purposes
           only and does not constitute legal advice.
         </p>
       </footer>

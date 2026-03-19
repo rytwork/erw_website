@@ -9,7 +9,7 @@ export default function TermsConditions() {
       <section>
         <p>
           These Terms & Conditions (“Terms”) govern your access to and use of the{" "}
-          <strong>Earn Ref Wave (ERW)</strong> mobile application and related
+          <strong>Earn Refer Win (Erw pro)</strong> mobile application and related
           services (the “App”).
         </p>
         <p>
@@ -173,7 +173,7 @@ export default function TermsConditions() {
         <h2>9. Intellectual Property</h2>
         <p>
           All content, trademarks, logos, and materials available in the App
-          are owned by or licensed to Earn Ref Wave. Unauthorized use is
+          are owned by or licensed to Earn Refer Win. Unauthorized use is
           prohibited.
         </p>
       </section>
@@ -185,7 +185,7 @@ export default function TermsConditions() {
           warranties of any kind.
         </p>
         <p>
-          To the fullest extent permitted by law, Earn Ref Wave shall not be
+          To the fullest extent permitted by law, Earn Refer Win shall not be
           liable for any indirect, incidental, or consequential damages arising
           from your use of the App.
         </p>
@@ -219,7 +219,7 @@ export default function TermsConditions() {
 
       <footer className="muted">
         <p>
-          © Earn Ref Wave (ERW). These Terms are governed by applicable laws.
+          © Earn Refer Win (Erw pro). These Terms are governed by applicable laws.
           For legal advice, please consult a qualified professional.
         </p>
       </footer>

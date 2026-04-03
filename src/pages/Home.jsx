@@ -16,7 +16,8 @@ export default function Home() {
   const [qrImage, setQrImage] = useState("");
 
   // VIDEO STATE
-  const [videoIds, setVideoIds] = useState([]);
+  const [aboutVideoIds, setAboutVideoIds] = useState([]);
+  const [purposeVideoIds, setPurposeVideoIds] = useState([]);
   const [videosLoading, setVideosLoading] = useState(true);
 
   // FETCH VIDEOS FROM API
@@ -37,10 +38,26 @@ export default function Home() {
 
           const donationQr = data.donationQR || "";
           setQrImage(donationQr);
-          setVideoIds(cleanedIds);
+          setAboutVideoIds(cleanedIds);
         } else {
-          setVideoIds([]);
+          setAboutVideoIds([]);
         }
+
+        if (data?.status === "success" && Array.isArray(data.purposeVideoIds)) {
+          
+          console.log("data.purposeVideoIds.....", data.purposeVideoIds);
+          
+          const cleanedIds = data.purposeVideoIds.map((id) =>
+            id.split("?")[0]
+          );
+          console.log("cleanedIds:.....", cleanedIds);
+          
+          setPurposeVideoIds(cleanedIds);
+        } else {
+          setPurposeVideoIds([]);
+        }
+
+
       } catch (e) {
         console.error("Video fetch error:", e);
       } finally {
@@ -107,7 +124,7 @@ export default function Home() {
 
           <div className="hero-buttons">
             <a
-              href="https://play.google.com/store/apps/details?id=your.package.name"
+              href="https://play.google.com/store/apps/details?id=com.ryt.erw&hl=en"
               target="_blank"
               rel="noreferrer"
               className="store-btn"
@@ -168,10 +185,10 @@ export default function Home() {
         <div className="video-grid">
           {videosLoading ? (
             <p>Loading videos...</p>
-          ) : videoIds.length === 0 ? (
+          ) : purposeVideoIds.length === 0 ? (
             <p>No purpose videos available at the moment.</p>
           ) : (
-            videoIds.map((id, index) => (
+            purposeVideoIds.map((id, index) => (
               <iframe
                 key={index}
                 src={`https://www.youtube.com/embed/${id}`}
@@ -210,7 +227,7 @@ export default function Home() {
           {videosLoading ? (
             <p>Loading videos...</p>
           ) : (
-            videoIds.map((id, index) => (
+            aboutVideoIds.map((id, index) => (
               <iframe
                 key={index}
                 src={`https://www.youtube.com/embed/${id}`}
